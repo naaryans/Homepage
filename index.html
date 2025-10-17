@@ -5,25 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>neurapse</title>
   <meta name="description" content="making media computable." />
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
-  :root {
-    --bg: #0e0e0e;
-    --fg: #e0e0e0;
-    --accent: #00e87c;
-    --maxw: 680px;
-  }
-
-  body {
-    background-color: var(--bg);
-    color: var(--fg);
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
-    letter-spacing: 0.01em;
-    -webkit-font-smoothing: antialiased;
-  }
-</style>
+  <!-- IBM Plex Mono font -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -32,70 +16,88 @@
       --accent: #00e87c;
       --maxw: 680px;
     }
+
     body {
       background-color: var(--bg);
       color: var(--fg);
-      font-family: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-      font-size: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
       line-height: 1.7;
       margin: 0;
       padding: 64px 24px;
-      -webkit-font-smoothing: antialiased;
     }
+
     main {
       max-width: var(--maxw);
       margin: 0 auto;
     }
+
     .header, .sub-header {
-      font-weight: 800;
-      font-size: 20px;
+      font-weight: 600;
+      font-size: 22px;
       line-height: 1.5;
       margin: 0 0 2em 0;
     }
+
     .header .title, .sub-header .title {
       display: block;
-      font-weight: 800;
-      font-size: 30px;
+      font-weight: 700;
+      font-size: 32px;
     }
+
     p {
       margin: 0 0 1.7em 0;
     }
+
     p:last-of-type {
       margin-bottom: 0;
     }
+
     a {
       color: var(--accent);
       text-decoration: underline;
       text-underline-offset: 3px;
+      transition: opacity 0.2s ease;
     }
+
     a:hover {
       text-decoration: none;
+      opacity: 0.8;
     }
+
     .nav-links a {
       margin-right: 0.5em;
     }
+
     .label {
       color: #888;
       margin-right: 0.5em;
     }
+
     .update-date {
-      font-weight: 800; /* Bolder date style */
+      font-weight: 600;
     }
+
     /* Hide sub-pages by default */
     #contact, #updates {
       display: none;
     }
   </style>
 </head>
+
 <body>
   <main>
-    <!-- HOME PAGE STATE -->
+    <!-- HOME PAGE -->
     <div id="home">
       <div class="header">
         <span class="title">NEURAPSE.</span>
         Making media computable.
       </div>
-      <p>The cognition engine for the world’s spoken and visual archives. <br> It transmutes podcasts, lectures, and conversations into structured living knowledge.</p>
+      <p>The cognition engine for the world’s spoken and visual archives.<br>
+         It transmutes podcasts, lectures, and conversations into structured living knowledge.</p>
       <p>We build the interface to interact with ideas, not timestamps.</p>
       <p>The system unifies speech recognition, visual grounding, and retrieval-augmented generation into a single reasoning layer.</p>
       <p><span class="label">STATUS:</span>Prototype. Architecture is being hardened on open models and lean infrastructure.</p>
@@ -107,23 +109,25 @@
       </p>
     </div>
 
-    <!-- CONTACT PAGE STATE -->
+    <!-- CONTACT PAGE -->
     <div id="contact">
       <div class="sub-header">
-        <span class="title">Contact Us</span>
+        <span class="title">Contact</span>
       </div>
-      <p>For those interested in our company, please shoot a DM <a href="https://twitter.com/messages/compose?recipient_id=1975381492193783808" target="_blank" rel="noopener noreferrer">here</a>.</p>
-      <p>For other inquiries please email us at <a href="mailto:naaryans@neurapse.xyz">naaryans@neurapse.xyz</a>.</p>
+      <p>For those interested in our company, please shoot a DM
+         <a href="https://twitter.com/messages/compose?recipient_id=1975381492193783808" target="_blank" rel="noopener noreferrer">here</a>.</p>
+      <p>For other inquiries please email us at
+         <a href="mailto:naaryans@neurapse.xyz">naaryans@neurapse.xyz</a>.</p>
       <p><a href="#" class="back-link">Back</a></p>
     </div>
 
-    <!-- UPDATES PAGE STATE -->
+    <!-- UPDATES PAGE -->
     <div id="updates">
       <div class="sub-header">
         <span class="title">UPDATES</span>
       </div>
       <p class="update-date">[2025-10-17]</p>
-      <p>building NEURAPSE: cognition for linear media. <br> making media computable.</p>
+      <p>building NEURAPSE: cognition for linear media.<br>making media computable.</p>
       <p>podcasts, lectures, and videos become structured, searchable thought.</p>
       <p>the interface between memory and machine cognition.</p>
       <p><a href="#" class="back-link">Back</a></p>
@@ -133,38 +137,34 @@
   <script>
     const homeView = document.getElementById('home');
     const contactView = document.getElementById('contact');
-    const updatesView = document.getElementById('updates'); // new view
-
+    const updatesView = document.getElementById('updates');
     const contactLink = document.getElementById('contact-link');
-    const updatesLink = document.getElementById('updates-link'); // new link
-    const backLinks = document.querySelectorAll('.back-link'); // all back links
+    const updatesLink = document.getElementById('updates-link');
+    const backLinks = document.querySelectorAll('.back-link');
 
-    // function to switch views
     function showView(viewToShow) {
-        homeView.style.display = 'none';
-        contactView.style.display = 'none';
-        updatesView.style.display = 'none';
-        viewToShow.style.display = 'block';
+      homeView.style.display = 'none';
+      contactView.style.display = 'none';
+      updatesView.style.display = 'none';
+      viewToShow.style.display = 'block';
     }
 
-    // event listeners
-    contactLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showView(contactView);
+    contactLink.addEventListener('click', e => {
+      e.preventDefault();
+      showView(contactView);
     });
 
-    updatesLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showView(updatesView);
+    updatesLink.addEventListener('click', e => {
+      e.preventDefault();
+      showView(updatesView);
     });
 
     backLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            showView(homeView);
-        });
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        showView(homeView);
+      });
     });
   </script>
 </body>
 </html>
-
