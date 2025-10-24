@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEURAPSE</title>
+    <style>
+        :root {
+            --background-color: #0a0a0a;
+            --text-color: #c7c7c7;
+            --highlight-color: #ffffff;
+            --border-color: #555555;
+            --font-stack: 'SF Mono', 'Consolas', 'Menlo', monospace;
+            --accent-green: #00ff00; /* hacker green */
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: var(--font-stack);
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0;
+            padding: 3rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+
+        .container {
+            max-width: 680px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3.20rem;
+            color: var(--highlight-color);
+            letter-spacing: 1px;
+            margin: 0;
+            font-weight: 600;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin: 0.25rem 0 2.5rem 0;
+            color: var(--border-color);
+        }
+
+        .waitlist-form {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            margin: 0 auto 4rem auto;
+            max-width: 500px;
+        }
+
+        .email-input {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--highlight-color);
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            border-right: none;
+            outline: none;
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        .email-input:focus {
+            border-color: var(--highlight-color);
+        }
+        
+        .email-input::placeholder {
+            color: var(--border-color);
+            opacity: 1;
+        }
+
+        .submit-button {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--highlight-color);
+            font-family: inherit;
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            white-space: nowrap;
+        }
+        
+        .submit-button:hover,
+        .submit-button:focus {
+            background-color: var(--highlight-color);
+            color: var(--background-color);
+            border-color: var(--highlight-color);
+        }
+        
+        .manifesto {
+            border-top: 1px solid var(--border-color);
+            padding-top: 3rem;
+        }
+
+        .manifesto p {
+            margin: 0;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .manifesto p:nth-child(2) {
+            color: var(--accent-green);
+        }
+        
+        .footer-info {
+            margin-top: 4rem;
+            font-size: 0.875rem;
+            color: var(--border-color);
+        }
+        
+        .footer-info p {
+             margin: 0.25rem 0;
+        }
+
+        .footer-info span {
+            color: var(--text-color);
+        }
+
+        .contact-trigger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: transparent;
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+            padding: 6px 12px;
+            cursor: pointer;
+            font-family: var(--font-stack);
+            font-size: 0.95em;
+            transition: all 0.2s ease;
+            z-index: 100;
+        }
+
+        .contact-trigger:hover {
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        .contact-box {
+            position: fixed;
+            top: 50px;
+            left: 20px;
+            display: none;
+            margin-top: 10px;
+            padding: 14px;
+            border: 1px solid var(--accent-green);
+            background: rgba(0,0,0,0.92);
+            color: #ffffff;
+            width: 260px;
+            line-height: 1.5;
+            font-size: 0.9em;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 100;
+            border-radius: 0;
+        }
+
+        .contact-box.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .contact-box a {
+            color: var(--accent-green);
+            text-decoration: underline;
+        }
+
+        .contact-box a:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1><i>NEURAPSE.</i></h1>
+            <p class="tagline"><i><strong>Making media computable.</strong></i></p>
+        <form id="waitlistForm" class="waitlist-form"
+            action="https://formsubmit.co/naaryans@neurapse.xyz"
+            method="POST">
+            <input type="email" name="email" class="email-input" placeholder="DROP YOUR NEURAL ID (email)" required>
+            <input type="hidden" name="_subject" value="new neurapse waitlist signup">
+            <input type="hidden" name="_next" value="https://neurapse.xyz/thanks.html"> <!-- optional redirect -->
+            <button type="submit" class="submit-button">[ INITIATE BREACH ]</button>
+        </form>
+
+            <p id="waitlistStatus" class="status" style="font-size: 0.9rem; color: var(--accent-green); margin-top: 1rem;"></p>
+        </header>
+
+        <section class="manifesto">
+            <p>The world's spoken and visual archives are data dark matter.</p>
+            <p><i>We build the cognition engine that transmutes podcasts, lectures, and conversations into structured, queryable knowledge.</i></p>
+            <p>Interact with ideas, not timestamps.</p>
+        </section>
+
+        <footer class="footer-info">
+            <strong><p><span>MISSION:</span> Where memory meets cognition.</p></strong>
+            <strong><p><span>STATUS:</span> Prototype. Architecture hardening on open models and lean infrastructure.</p></strong>
+            <strong><p><span>FOCUS:</span> Stability, Scale, Speed. Each cycle expands compute toward public release.</p></strong>
+        </footer>
+    </main>
+
+    <button id="contactToggle" class="contact-trigger">[Contact]</button>
+    <div id="contactBox" class="contact-box">
+        <strong>Contact</strong><br><br>
+        For those interested in our company, please shoot a DM 
+        <a href="https://twitter.com/messages/compose?recipient_id=1975381492193783808" target="_blank">here</a>.<br><br>
+        For other inquiries, email:<br>
+        <a href="mailto:naaryans@neurapse.xyz">naaryans@neurapse.xyz</a>
+    </div>
+
+    <script>
+        let contactOpen = false;
+        function toggleContact() {
+            const box = document.getElementById('contactBox');
+            const button = document.getElementById('contactToggle');
+            contactOpen = !contactOpen;
+            if (contactOpen) {
+                box.classList.add('show');
+                button.style.boxShadow = '0 0 8px #00ff00';
+            } else {
+                box.classList.remove('show');
+                button.style.boxShadow = 'none';
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            const box = document.getElementById('contactBox');
+            const button = document.getElementById('contactToggle');
+            if (contactOpen && !box.contains(e.target) && e.target !== button) {
+                box.classList.remove('show');
+                button.style.boxShadow = 'none';
+                contactOpen = false;
+            }
+        });
+
+        document.getElementById('contactToggle').addEventListener('click', toggleContact);
+
+        // Waitlist form handler
+        // document.getElementById('waitlistForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     const email = document.querySelector('input[type="email"]').value;
+        //     const status = document.getElementById('waitlistStatus');
+        //     if (email) {
+        //         console.log('Email captured:', email); // test log—replace with api call later
+        //         status.textContent = 'signal locked. you’re in the queue. ascension inbound.';
+        //         document.querySelector('input[type="email"]').value = ''; // clear input
+        //         setTimeout(() => { status.textContent = ''; }, 5000); // clear message after 5s
+        //     }
+        // });
+        
+
+    </script>
+</body>
+</html>
